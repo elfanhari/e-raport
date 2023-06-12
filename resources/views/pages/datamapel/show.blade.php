@@ -71,7 +71,7 @@
                                                   @endif
                                               </td>
                                               <td>
-                                                  <a href="{{ route('datapembelajaran.show', $item->id) }}"
+                                                  <a href="{{ route('datapembelajaran.show', ['role' => auth()->user()->role, 'datapembelajaran' => $item->id]) }}"
                                                       class="btn btn-success pb-1 pt-0 px-2">
                                                       <svg xmlns="http://www.w3.org/2000/svg" width="16"
                                                           height="16" fill="currentColor"

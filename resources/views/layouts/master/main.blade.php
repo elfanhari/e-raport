@@ -64,6 +64,7 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;500;700&family=Poppins:wght@300;400;500;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
     </style>
 
 </head>

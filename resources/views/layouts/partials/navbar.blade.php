@@ -1,4 +1,4 @@
-<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light sen tracking-tight">
   <!-- Left navbar links -->
   <ul class="navbar-nav">
       <li class="nav-item">
@@ -19,7 +19,7 @@
               class="d-xs-none p-2 fw-bold mt-1">{{ $userLogin->name }}{{ $userLogin->gelar ? ', ' . $userLogin->gelar : '' }}</span>
           <span
               class="d-sm-none p-1 fw-bold mt-1">{{ Str::before($userLogin->name, ' ') }}</span>
-          <img src="/img/{{ $userLogin->foto }}" style="width: 40px;" class="img-circle elevation-1"
+          <img src="/img/{{ $userLogin->foto }}" style="width: 35px; height: 35px; object-fit: cover;" class="img-circle elevation-1"
               alt="User Image">
           <ul class="dropdown-menu dropdown-menu-right">
               <li>

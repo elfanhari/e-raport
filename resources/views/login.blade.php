@@ -1,39 +1,5 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Login</title>
-</head>
-<body>
-
-
-
-  <h1>LOGIN</h1> <br>
-
-  <form action="/login" method="post">
-  @csrf
-
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username"> <br> <br>
-
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password"> <br> <br>
-
-    <button type="submit" style="margin-left: 90px;">LOGIN</button>
-
-  </form>
-
-</body>
-</html> --}}
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -52,77 +18,49 @@
 
 <body class="hold-transition login-page">
 
-  <a href="#" class="h1 mb-5"><b>e-Raport</b> MTs Tarbiyatul Banat</a>
-
-    <div class="login-box">
-        <!-- /.login-logo -->
-
-        <div class="card card-outline card-primary">
-
-            <div class="card-header text-center">
-                <a href="#" class="h1">Log-in</a>
-            </div>
-
-            <div class="card-body">
-                @if (session()->has('info'))
-                    <div class="alert alert-warning alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <h5><i class="icon fas fa-exclamation-triangle"></i> Perhatian!</h5>
-                        {{ session('info') }}
-                    </div>
-                @endif
-
-                {{-- <p class="login-box-msg">Sign in to start your session</p> --}}
-
-                <form action="/login" method="post">
-                    @csrf
-                    <div class="input-group mb-3">
-                        <input type="text" name="username" class="form-control" placeholder="Username">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        {{-- <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember">
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div> --}}
-                        <!-- /.col -->
-                        <div class="col-4 offset-8">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
-
-                <!-- /.social-auth-links -->
-
-                {{-- <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
-      </p> --}}
-
-
-
-            </div>
-            <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
+    <div class="mx-auto mb-4 d-block justify-content-center text-center">
+        <small class="h5 text-bold">e-Raport</small>
+        <p class="h3">Mts Tarbiyatul Banat</p>
     </div>
-    <!-- /.login-box -->
+
+    <div class="login-box mt-2">
+
+        @if (session()->has('info'))
+            <div class="alert alert-yellow alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h6 class="text-bold"><i class="icon fas fa-exclamation-circle"></i> Perhatian!</h6>
+                {{ session('info') }}
+            </div>
+        @endif
+
+        <form action="/login" method="post">
+            @csrf
+            <label for="username">Username</label>
+            <div class="input-group mb-4">
+                <input type="text" name="username" id="username" class="form-control" placeholder="username">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-envelope"></span>
+                    </div>
+                </div>
+            </div>
+            <label for="password">Password</label>
+            <div class="input-group mb-4">
+                <input type="password" name="password" id="password" class="form-control" placeholder="password">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-2">
+                    <button type="submit" class="btn btn-black rounded btn-block">Sign in to account</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
 
     <!-- jQuery -->
     <script src="/adminlte/plugins/jquery/jquery.min.js"></script>
@@ -131,13 +69,10 @@
     <!-- AdminLTE App -->
     <script src="/adminlte/dist/js/adminlte.min.js"></script>
 
-
     <script>
         @if (session()->has('info'))
           toastr.success('good')
         @endif
     </script>
-
 </body>
-
 </html>
