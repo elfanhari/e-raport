@@ -81,7 +81,7 @@
                                                 <th scope="col" colspan="2">Pembagian</th>
                                                 <th scope="col" rowspan="2">Aksi</th>
                                             </tr>
-                                            <tr class="bg-warning text-dark">
+                                            <tr class="bg-yellow">
                                               <th scope="col">Tempat</th>
                                               <th scope="col">Tanggal</th>
                                             </tr>

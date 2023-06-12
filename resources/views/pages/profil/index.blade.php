@@ -53,10 +53,10 @@
                 <div class="col-md-4">
 
                     <!-- Profile Image -->
-                    <div class="card card-primary card-outline">
+                    <div class="card card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle" src="/img/{{ $userLogin->foto ?? '' }}"
+                                <img class="profile-user-img img-fluid img-circle img-profile" src="/img/{{ $userLogin->foto ?? '' }}"
                                     alt="User profile picture">
                             </div>
 
@@ -112,11 +112,11 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header p-2">
-                            <ul class="nav nav-pills">
+                            <ul class="nav nav-mine">
                                 <li class="nav-item"><a class="nav-link active" href="#profil" data-toggle="tab">Edit
                                         Profil</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#foto" data-toggle="tab">Edit Foto</a></li>
-                                <li class="nav-item"><a class="nav-link " href="#akun" data-toggle="tab">Edit Akun</a>
+                                <li class="nav-item"><a class="nav-link" href="#akun" data-toggle="tab">Edit Akun</a>
                                 </li>
                             </ul>
                         </div><!-- /.card-header -->
@@ -423,8 +423,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td class="text-center"><img src="/img/{{ $userLogin->foto }}"
-                                                                alt="" style="width: 120px"
-                                                                class="rounded-circle"></td>
+                                                                alt=""
+                                                                class="rounded-circle img-profile"></td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -438,10 +438,10 @@
                                                     value="{{ $userLogin->foto }}" hidden>
 
                                                 <div class="">
-                                                    <div class="my-2">
-                                                        <img class="img-preview img-fluid mb-2 col-sm-6 rounded-circle oferflow-y-hidden"
+                                                    <div class="my-2 position-relative">
+                                                        <img class="img-preview img-fluid mb-2 col-sm-6 rounded oferflow-y-hidden"
                                                             style="max-width: 200px;">
-                                                    </div>
+                                                    </div>  
                                                     <div class="input-group mb-3">
                                                         <input type="hidden" name="user_id"
                                                             value="{{ $userLogin->user_id }}">

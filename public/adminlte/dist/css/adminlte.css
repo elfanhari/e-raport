@@ -2579,6 +2579,26 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 
+.btn-black {
+  color: #fff;
+  background-color: #030712;
+  border-color: #030712;
+  box-shadow: none;
+}
+
+.btn-black:hover {
+  color: #fff;
+  background-color: #111827;
+  border-color: #111827;
+}
+
+.btn-black:focus, .btn-black.focus {
+  color: #fff;
+  background-color: #111827;
+  border-color: #111827;
+  box-shadow: 0 0 0 0 rgba(130, 138, 145, 0.5);
+}
+
 .btn-primary {
   color: #fff;
   background-color: #007bff;
@@ -44507,6 +44527,12 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 
 .img-circle {
   border-radius: 50%;
+}
+
+.img-profile {
+  height: 6rem;
+  width: 6rem;
+  object-fit: cover;
 }
 
 .img-size-64,
