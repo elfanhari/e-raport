@@ -69,9 +69,9 @@
                     </div>
                     <div class="card-body">
                       <div class="table-responsive">
-                        <table class="table table-border table-hover mt-xs-2">
+                        <table class="table table-borderless mt-xs-2">
 
-                            <tr class="text-center table-secondary">
+                            <tr class="text-center text-bold">
                                 <td>Logo</td>
                             </tr>
                             <tr>
