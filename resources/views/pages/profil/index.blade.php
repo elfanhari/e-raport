@@ -54,32 +54,32 @@
 
                     <!-- Profile Image -->
                     <div class="card card-outline">
-                        <div class="card-body box-profile">
+                        <div class="card-body box-profile mt-3">
                             <div class="text-center">
                                 <img class="profile-user-img img-fluid img-circle img-profile" src="/img/{{ $userLogin->foto ?? '' }}"
                                     alt="User profile picture">
                             </div>
 
-                            <h3 class="profile-username text-center fw-bold mt-3">
+                            <h5 class="text-center fw-bold mt-3">
                                 {{ $userLogin->name }}{{ $userLogin->gelar ? ', ' . $userLogin->gelar : '' }}
-                            </h3>
+                            </h4>
 
                             <p class="text-muted text-center text-capitalize">
                                 {{ auth()->user()->role == 'walisiswa' ? 'Wali Siswa' : auth()->user()->role }}</p>
 
                             <ul class="list-group list-group-unbordered mb-3">
                                 <li class="list-group-item">
-                                    <b>Username</b> <a class="float-right">
+                                    <b>Username</b> <a class="float-right text-secondary">
                                         {{ Auth::user()->username }}
                                     </a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Email</b> <a class="float-right">
+                                    <b>Email</b> <a class="float-right text-secondary">
                                         {{ Auth::user()->email }}
                                     </a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Role</b> <a class="float-right">
+                                    <b>Role</b> <a class="float-right text-secondary">
                                         @if ($admin)
                                             Administrator
                                         @elseif(Auth::user()->role == 'guru' && $guru->kelas)
@@ -416,9 +416,9 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="table-responsive">
-                                                <table class="table table-border table-hover mt-xs-2">
+                                                <table class="table table-borderless mt-xs-2">
 
-                                                    <tr class="text-center table-secondary">
+                                                    <tr class="text-center text-bold">
                                                         <td>Foto</td>
                                                     </tr>
                                                     <tr>
