@@ -78,7 +78,7 @@
                                                             {{-- <input type="hidden" name="siswa_id[]" value="{{ $item->id }}"> --}}
                                                             <form action="{{ route('cetakraport.print', ['id' => $item->id, 'nisn' => $item->nisn]) }}" method="get" target="_blank">
                                                             {{-- @csrf --}}
-                                                              <button type="submit" class="btn btn-primary">Cetak Raport</button>
+                                                              <button type="submit" class="btn btn-primary btn-sm">Cetak Raport</button>
                                                             </form>
                                                           </td>
 

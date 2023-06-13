@@ -37,7 +37,7 @@
             @csrf
             <label for="username">Username</label>
             <div class="input-group mb-4">
-                <input type="text" name="username" id="username" class="form-control" placeholder="username">
+                <input type="text" value="{{ old('username') }}" name="username" id="username" class="form-control" placeholder="Masukkan username">
                 <div class="input-group-append">
                     <div class="input-group-text">
                         <span class="fas fa-envelope"></span>
@@ -46,7 +46,7 @@
             </div>
             <label for="password">Password</label>
             <div class="input-group mb-4">
-                <input type="password" name="password" id="password" class="form-control" placeholder="password">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan password">
                 <div class="input-group-append">
                     <div class="input-group-text">
                         <span class="fas fa-lock"></span>

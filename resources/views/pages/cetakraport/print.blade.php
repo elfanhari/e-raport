@@ -752,7 +752,6 @@
         <tr>
           <td colspan="4" style="height: 25px; padding-top: 5px"><strong>E. KETIDAKHADIRAN</strong></td>
         </tr>
-        @if(!is_null($kehadiran_siswa))
         <tr class="nilai">
           <td colspan="2" style="border-right:0 ;">Sakit</td>
           <td style="border-left:0 ;">: {{$kehadiran_siswa->sakit ?? 0}} hari</td>
@@ -768,11 +767,6 @@
           <td style="border-left:0 ;">: {{$kehadiran_siswa->tanpa_keterangan ?? 0}} hari</td>
           <td class="false"></td>
         </tr>
-        @else
-        <tr class="nilai">
-          <td colspan="4"><b>Data kehadiran belum diinput</b></td>
-        </tr>
-        @endif
         <!-- End Ketidakhadiran  -->
 
         <!-- Catatan Wali Kelas -->

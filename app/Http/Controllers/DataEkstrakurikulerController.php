@@ -73,12 +73,11 @@ class DataEkstrakurikulerController extends Controller
     {
         $ekskul = Ekstrakurikuler::find($id);
         $anggotaEkskul = AnggotaEkskul::where('ekstrakurikuler_id', $id)->get();
-        // $anggotaEkskul = Siswa::whereIn('id', $anggotaEkskul)->get();
         return view('pages.dataekstrakurikuler.show', [
           'anggota' => $anggotaEkskul,
           'ekskul' => AnggotaEkskul::find($id),
           'ekstrakurikuler' => $ekskul,
-          'siswa' => Siswa::get(),
+          'siswa' => Siswa::where('status', 1)->orderBy('name')->get(),
         ]);
     }
 

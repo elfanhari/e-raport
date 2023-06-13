@@ -3,7 +3,7 @@
     <div class="form-group row">
       <label for="abc" class="col-sm-4 col-form-label">Nama Mapel</label>
       <div class="col-sm-8">
-        <input type="text" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror " name="name" id="name" placeholder="Masukkan nama mapel">
+        <input type="text" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror " name="name" id="name" placeholder="Masukkan nama Mapel">
         @error('name')
         <span class="invalid-feedback mt-1">
           {{ $message }}
@@ -14,7 +14,7 @@
     <div class="form-group row">
       <label for="singkatan" class="col-sm-4 col-form-label">Singkatan Mapel</label>
       <div class="col-sm-8">
-        <input type="text" value="{{ old('singkatan') }}" class="form-control @error('singkatan') is-invalid @enderror " name="singkatan" id="" placeholder="Masukkan singkatan mapel">
+        <input type="text" value="{{ old('singkatan') }}" class="form-control @error('singkatan') is-invalid @enderror " name="singkatan" id="" placeholder="Masukkan singkatan Mapel">
         @error('singkatan')
         <span class="invalid-feedback mt-1">
           {{ $message }}

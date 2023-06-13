@@ -45,5 +45,13 @@ class DatabaseSeeder extends Seeder
           NilaiSpiritualSeeder::class,
           KehadiranSeeder::class,
         ]);
+
+        // $this->call([
+        //   UserSeeeder::class,
+        //   AdminSeeder::class,
+        //   GuruSeeder::class,
+        //   // SiswaSeeder::class,
+        //   // WaliSeeder::class,
+        // ]);
     }
 }

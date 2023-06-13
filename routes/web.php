@@ -50,10 +50,7 @@ Route::get('/', function (User $role) {
 })->name('home');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'cekLogin'])->name('login');
-
-Route::post('/logout', LogoutController::class);
-
+Route::post('/login', [LoginController::class, 'cekLogin'])->name('login')->middleware('guest');
 
 Route::group(['middleware' => ['auth']], function(){
   Route::get('/{role}/dashboard', [DashboardController::class, 'index']);
@@ -92,4 +89,7 @@ Route::group(['middleware' => ['auth']], function(){
   Route::put('/updateprofil/{id}', [ProfilController::class, 'update'])->name('profil.update');
   Route::put('/updatefoto/{id}', [ProfilController::class, 'updatePhoto'])->name('foto.update');
   Route::put('/updateakun/{id}', [ProfilController::class, 'updateAkun'])->name('akunsaya.update');
+
+  Route::post('/logout', LogoutController::class);
+
 });

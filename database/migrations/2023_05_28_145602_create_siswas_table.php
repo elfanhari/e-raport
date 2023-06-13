@@ -31,7 +31,7 @@ class CreateSiswasTable extends Migration
             $table->enum('statusdalamkeluarga', ['1','2','3']);
             $table->bigInteger('anak_ke');
             $table->text('alamat');
-            $table->string('telepon');
+            $table->string('telepon')->nullable();
             $table->string('namaayah')->nullable();
             $table->string('namaibu')->nullable();
             $table->string('pekerjaanayah')->nullable();

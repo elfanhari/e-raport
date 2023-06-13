@@ -23,7 +23,7 @@
                             Edit Data Kelas
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('datakelas.update', $kelas->id) }}" method="POST">
+                            <form action="{{ route('datakelas.update', ['datakela' => $kelas->id, 'role' => $role]) }}" method="POST">
                                 @csrf
                                 @method('PUT')
 

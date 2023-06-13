@@ -49,6 +49,8 @@ class DataTapelController extends Controller
       $request->validate([
         'tahun_pelajaran' => 'required',
         'semester' => 'required',
+        'tempatbagiraport' => 'required',
+        'tanggalbagiraport' => 'required',
       ]);
 
       $tahun_pelajaran = Tapel::where('tahun_pelajaran', $request->tahun_pelajaran)->get()->pluck('semester');

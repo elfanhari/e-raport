@@ -45,6 +45,7 @@ class DataKelasController extends Controller
         return view('pages.datakelas.create', [
           'guru' => Guru::doesntHave('kelas')->get(),
           'tapel' => Tapel::get(),
+          'role' => auth()->user()->role,
         ]);
     }
 
@@ -57,7 +58,7 @@ class DataKelasController extends Controller
     public function store(KelasRequest $request)
     {
         Kelas::create($request->all());
-        return redirect(route('datakelas.index'))->withInfo('Data Kelas: <b>' . $request->name . '</b> berhasil ditambahkan!');
+        return redirect(route('datakelas.index', auth()->user()->role))->withInfo('Data Kelas: <b>' . $request->name . '</b> berhasil ditambahkan!');
     }
 
     /**
@@ -70,7 +71,7 @@ class DataKelasController extends Controller
     {
         return view('pages.datakelas.show',[
           'kelas' => Kelas::find($id),
-          'siswa' => Siswa::where('kelas_id', $id)->where('status', 1)->get(),
+          'siswa' => Siswa::where('kelas_id', $id)->where('status', 1)->orderBy('name', 'ASC')->get(),
           'role' => auth()->user()->role,
         ]);
     }
@@ -81,7 +82,7 @@ class DataKelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($role, $id)
     {
       // $kelasDiEdit = ;
       // $waliKelas = Guru::whereId($kelasDiEdit->guru_id);
@@ -91,6 +92,7 @@ class DataKelasController extends Controller
         // 'walikelas' => $waliKelas,
         'guru' => Guru::doesntHave('kelas')->get(),
         'tapel' => Tapel::get(),
+        'role' => auth()->user()->role,
       ]);
     }
 
@@ -101,7 +103,7 @@ class DataKelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $role, $id)
     {
       $kelasDiEdit = Kelas::find($id);
       $request->validate([
@@ -109,7 +111,7 @@ class DataKelasController extends Controller
       ]);
 
       Kelas::find($id)->update($request->all());
-      return redirect(route('datakelas.index'))->withInfo('Data Kelas: <b>' . $request->name . '</b> berhasil diperbarui!');
+      return redirect(route('datakelas.index', $role))->withInfo('Data Kelas: <b>' . $request->name . '</b> berhasil diperbarui!');
     }
 
     /**
@@ -118,9 +120,9 @@ class DataKelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request, $role, $id)
     {
         Kelas::find($id)->delete();
-        return redirect(route('datakelas.index'))->withInfo('Data Kelas: <b>' . $request->name . '</b> berhasil dihapus!');
+        return redirect(route('datakelas.index', $role))->withInfo('Data Kelas: <b>' . $request->name . '</b> berhasil dihapus!');
     }
 }

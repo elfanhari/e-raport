@@ -23,7 +23,7 @@
                             Tambah Data Kelas
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('datakelas.store') }}" method="POST">
+                            <form action="{{ route('datakelas.store', $role) }}" method="POST">
                                 @csrf
 
                                 @include('pages.datakelas._addform')

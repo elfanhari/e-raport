@@ -96,7 +96,6 @@ class ProfilController extends Controller
       } else {
         $akun->update($request->except('password'));
       }
-
       return back()->withInfo('Data Akun berhasil diperbarui!');
   }
 

@@ -5,16 +5,13 @@
     <div class="content-header">
         <div class="container-fluid">
 
-            <div class="row mb-2">
+            <div class="row">
                 <div class="col-sm-6">
                     <h1 class="m-0">Nilai Sosial - Kelas {{ $kelas->name }}</h1>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 offset-md-6">
-                    @if (session()->has('info'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="col-sm-6">
+                  @if (session()->has('info'))
+                        <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
                             @include('_success')
                             {!! session('info') !!}
                         </div>
@@ -48,7 +45,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            @if (!$nilaiSosial)
+                            @if (count($siswa) < 1)
                                 Belum ada Nilai Sosial.
                             @else
                                 <div class="table-responsive">

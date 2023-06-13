@@ -119,6 +119,6 @@ class DataSekolahController extends Controller
         File::delete($filegambar);
       }
 
-      return back()->withInfo('Foto profil berhasil diperbarui!');
+      return back()->withInfo('Logo sekolah berhasil diperbarui!');
     }
 }

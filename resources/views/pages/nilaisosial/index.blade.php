@@ -5,7 +5,7 @@
     <div class="content-header">
         <div class="container-fluid">
 
-            <div class="row mb-2">
+            <div class="row">
                 <div class="col-sm-6">
                     <h1 class="m-0">Data Nilai Sosial</h1>
                 </div>
@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-md-6 offset-md-6">
                     @if (session()->has('info'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
                             @include('_success')
                             {!! session('info') !!}
                         </div>
@@ -108,10 +108,10 @@
                 </div>
                 <div class="modal-body fs-xs-14">
                     <table class="table table-borderless table-sm m-0">
-                        @include('petunjuk.add')
-                        @include('petunjuk.show')
+                        {{-- @include('petunjuk.add') --}}
+                        {{-- @include('petunjuk.show') --}}
                         @include('petunjuk.edit')
-                        @include('petunjuk.delete')
+                        {{-- @include('petunjuk.delete') --}}
                     </table>
                 </div>
                 <div class="modal-footer">

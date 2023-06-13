@@ -16,7 +16,7 @@ class CreateCatatanwalikelasTable extends Migration
         Schema::create('catatanwalikelas', function (Blueprint $table) {
           $table->id();
           $table->foreignId('siswa_id');
-          $table->string('catatan', 200);
+          $table->string('catatan', 200)->nullable();
           $table->timestamps();
         });
     }

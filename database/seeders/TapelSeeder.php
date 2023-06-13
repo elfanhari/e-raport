@@ -16,16 +16,16 @@ class TapelSeeder extends Seeder
     {
       collect([
         [
-          'tahun_pelajaran' => '2022/2023',
+          'tahun_pelajaran' => '2023/2024',
           'semester' => 1,
           'tempatbagiraport' => 'Ciamis',
           'tanggalbagiraport' => '2022-12-23'
         ],
         [
-          'tahun_pelajaran' => '2022/2023',
+          'tahun_pelajaran' => '2023/2024',
           'semester' => 2,
           'tempatbagiraport' => 'Ciamis',
-          'tanggalbagiraport' => '2023-06-23'
+          'tanggalbagiraport' => '2024-06-23'
         ],
       ])->each(function($tapel){
         Tapel::create($tapel);

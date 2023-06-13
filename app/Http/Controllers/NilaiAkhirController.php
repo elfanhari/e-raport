@@ -84,6 +84,7 @@ class NilaiAkhirController extends Controller
         $rataRataSiswa = $nilaiAkhir->where('siswa_id', $item->id)->avg('rata_rata');
         $rataRata[] = $rataRataSiswa;
       }
+
       arsort($rataRata);
       $rank = 1;
       foreach ($rataRata as $siswaId => $nilai) {

@@ -73,7 +73,7 @@ class DataKehadiranController extends Controller
      */
     public function edit($role, $id)
     {
-      $siswa = Siswa::where('kelas_id', $id)->get();
+      $siswa = Siswa::where('kelas_id', $id)->where('status', 1)->get();
       return view('pages.kehadiran.edit', [
         'siswa' => $siswa,
         'kelas' => Kelas::find($id),

@@ -38,7 +38,7 @@ class DataWaliSiswaController extends Controller
     public function create()
     {
         return view('pages.datawalisiswa.create', [
-          'siswa' => Siswa::get(),
+          'siswa' => Siswa::orderBy('name', 'ASC')->get(),
           'role' => Auth::user()->role,
         ]);
     }

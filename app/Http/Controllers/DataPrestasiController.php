@@ -20,7 +20,7 @@ class DataPrestasiController extends Controller
         abort('403');
       } else {
           $prestasi = Prestasi::get();
-          $siswa = Siswa::get();
+          $siswa = Siswa::where('status', 1)->orderBy('name', 'ASC')->get();
           return view('pages.dataprestasi.index',[
             'prestasi' => $prestasi,
             'siswa' => $siswa,

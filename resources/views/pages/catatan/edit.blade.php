@@ -5,22 +5,19 @@
     <div class="content-header">
         <div class="container-fluid">
 
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Catatan - Kelas {{ $kelas->name }}</h1>
-                </div>
+          <div class="row">
+            <div class="col-sm-6">
+                <h1 class="m-0">Catatan - Kelas {{ $kelas->name }}</h1>
             </div>
-
-            <div class="row">
-                <div class="col-md-6 offset-md-6">
-                    @if (session()->has('info'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            @include('_success')
-                            {!! session('info') !!}
-                        </div>
-                    @endif
-                </div>
+            <div class="col-sm-6">
+              @if (session()->has('info'))
+                    <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+                        @include('_success')
+                        {!! session('info') !!}
+                    </div>
+                @endif
             </div>
+        </div>
 
         </div>
     </div>
@@ -31,13 +28,6 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            {{-- Petunjuk Aksi --}}
-                            <button class="btn btn-info d-inline btn-sm btn-icon-split float-right ms-2 rounded-circle"
-                                data-bs-toggle="modal" data-bs-target="#petunjukAksi">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-info-circle"></i>
-                                </span>
-                            </button>
 
                             <p>
                                 Tahun Pelajaran: <b>{{ $kelas->tapel->tahun_pelajaran }} - Semester {{ $kelas->tapel->semester == '1' ? 'Ganjil' : 'Genap' }}</b> <br>

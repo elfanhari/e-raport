@@ -34,7 +34,7 @@ class DataMapelController extends Controller
     public function create()
     {
       return view('pages.datamapel.create', [
-        'tapel' => Tapel::get(),
+        'tapel' => Tapel::orderBy('tahun_pelajaran', 'ASC')->orderBy('semester')->get(),
       ]);
     }
 

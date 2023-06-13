@@ -74,7 +74,7 @@ class DataNilaiSosialController extends Controller
    */
   public function edit($role, $id)
   {
-    $siswa = Siswa::where('kelas_id', $id)->get();
+    $siswa = Siswa::where('kelas_id', $id)->where('status', 1)->get();
     return view('pages.nilaisosial.edit', [
       'siswa' => $siswa,
       'kelas' => Kelas::find($id),
@@ -102,6 +102,8 @@ class DataNilaiSosialController extends Controller
       $nilaiSosial = $nilaiSosial->where('siswa_id', $siswa)->first();
       if ($nilaiSosial) {
         $nilaiSosial->update([
+          'siswa_id' => $siswa,
+          'tapel_id' => $tapel->id,
           'predikat' => $request->predikat[$i],
           'deskripsi' => $request->deskripsi[$i]
         ]);

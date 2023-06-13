@@ -5,16 +5,13 @@
     <div class="content-header">
         <div class="container-fluid">
 
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Kehadiran - Kelas {{ $kelas->name }}</h1>
-                </div>
-            </div>
-
             <div class="row">
-                <div class="col-md-6 offset-md-6">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Ketidakhadiran - Kelas {{ $kelas->name }}</h1>
+                </div>
+                <div class="col-sm-6">
                     @if (session()->has('info'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
                             @include('_success')
                             {!! session('info') !!}
                         </div>
@@ -40,7 +37,8 @@
                             </button>
 
                             <p>
-                                Tahun Pelajaran: <b>{{ $kelas->tapel->tahun_pelajaran }} - Semester {{ $kelas->tapel->semester == '1' ? 'Ganjil' : 'Genap' }}</b> <br>
+                                Tahun Pelajaran: <b>{{ $kelas->tapel->tahun_pelajaran }} - Semester
+                                    {{ $kelas->tapel->semester == '1' ? 'Ganjil' : 'Genap' }}</b> <br>
                                 Wali Kelas:
                                 <b>{{ $kelas->guru->name }}{{ $kelas->guru->gelar ? ', ' . $kelas->guru->gelar : '' }}</b>
                             </p>
@@ -52,7 +50,9 @@
                                 Belum ada Data Kehadiran.
                             @else
                                 <div class="table-responsive">
-                                    <form action="{{ route('kehadiran.update', ['kehadiran' => $kelas->id, 'role' => $role]) }}" method="POST">
+                                    <form
+                                        action="{{ route('kehadiran.update', ['kehadiran' => $kelas->id, 'role' => $role]) }}"
+                                        method="POST">
                                         @csrf
                                         @method('PUT')
 
@@ -75,21 +75,22 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $item->nis }}</td>
                                                         <td style="max-width: 300px" class="text-uppercase">
-                                                          {{ $item->name }}</td>
-                                                          <td>{{ $item->jk }}</td>
-                                                          <td>
-                                                          <input type="hidden" name="siswa_id[]" value="{{ $item->id }}">
-                                                          <input type="number" class="form-control input-nilai"
+                                                            {{ $item->name }}</td>
+                                                        <td>{{ $item->jk }}</td>
+                                                        <td>
+                                                            <input type="hidden" name="siswa_id[]"
+                                                                value="{{ $item->id }}">
+                                                            <input type="number" class="form-control input-nilai"
                                                                 name="sakit[]" id="sakit"
                                                                 value="{{ $kehadiran->where('siswa_id', $item->id)->first() ? $kehadiran->where('siswa_id', $item->id)->first()->sakit : '' }}">
                                                         </td>
                                                         <td>
-                                                          <input type="number" class="form-control input-nilai"
+                                                            <input type="number" class="form-control input-nilai"
                                                                 name="izin[]" id="izin"
                                                                 value="{{ $kehadiran->where('siswa_id', $item->id)->first() ? $kehadiran->where('siswa_id', $item->id)->first()->izin : '' }}">
                                                         </td>
                                                         <td>
-                                                          <input type="number" class="form-control input-nilai"
+                                                            <input type="number" class="form-control input-nilai"
                                                                 name="tk[]" id="tk"
                                                                 value="{{ $kehadiran->where('siswa_id', $item->id)->first() ? $kehadiran->where('siswa_id', $item->id)->first()->tk : '' }}">
                                                         </td>
@@ -120,7 +121,7 @@
                                             $(".rataRata").each(function() {
                                                 var row = $(this).closest("tr");
                                                 var sakit = parseFloat(row.find("input[name='sakit[]']")
-                                                .val()) || 0;
+                                                    .val()) || 0;
                                                 var izin = parseFloat(row.find("input[name='izin[]']").val()) || 0;
                                                 var tk = parseFloat(row.find("input[name='tk[]']").val()) || 0;
 
@@ -137,7 +138,6 @@
                                         hitungRataRata();
                                     });
                                 </script>
-
                             @endif
                         </div>
                         <!-- /.card-body -->

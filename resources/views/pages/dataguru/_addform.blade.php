@@ -25,7 +25,7 @@
     <div class="form-group row">
       <label for="nip" class="col-sm-4 col-form-label">NIP</label>
       <div class="col-sm-8">
-        <input type="number" value="{{ old('nip') }}" class="form-control @error('nip') is-invalid @enderror " name="nip" id="nip" placeholder="Masukkan nip">
+        <input type="number" value="{{ old('nip') }}" class="form-control @error('nip') is-invalid @enderror " name="nip" id="nip" placeholder="Masukkan NIP">
         @error('nip')
         <span class="invalid-feedback mt-1">
           {{ $message }}
@@ -36,7 +36,7 @@
     <div class="form-group row">
       <label for="nuptk" class="col-sm-4 col-form-label">NUPTK</label>
       <div class="col-sm-8">
-        <input type="number" value="{{ old('nuptk') }}" class="form-control @error('nuptk') is-invalid @enderror " name="nuptk" id="nuptk" placeholder="Masukkan nuptk">
+        <input type="number" value="{{ old('nuptk') }}" class="form-control @error('nuptk') is-invalid @enderror " name="nuptk" id="nuptk" placeholder="Masukkan NUPTK">
         @error('nuptk')
         <span class="invalid-feedback mt-1">
           {{ $message }}
@@ -63,7 +63,7 @@
     <div class="form-group row">
       <label for="abc" class="col-sm-4 col-form-label">Tempat Lahir</label>
       <div class="col-sm-8">
-        <input type="text" value="{{ old('tempatlahir') }}" class="form-control @error('tempatlahir') is-invalid @enderror " id="tempatlahir" name="tempatlahir" placeholder="Masukkan tempatlahir">
+        <input type="text" value="{{ old('tempatlahir') }}" class="form-control @error('tempatlahir') is-invalid @enderror " id="tempatlahir" name="tempatlahir" placeholder="Masukkan tempat lahir">
         @error('tempatlahir')
         <span class="invalid-feedback mt-1">
           {{ $message }}

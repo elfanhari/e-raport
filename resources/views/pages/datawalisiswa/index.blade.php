@@ -13,12 +13,9 @@
                 <div class="col-sm-6">
                     <h1 class="m-0">Data Wali Siswa</h1>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 offset-md-6">
-                    @if (session()->has('info'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="col-sm-6">
+                  @if (session()->has('info'))
+                        <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
                             @include('_success')
                             {!! session('info') !!}
                         </div>

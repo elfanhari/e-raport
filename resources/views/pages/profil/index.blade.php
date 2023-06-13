@@ -82,10 +82,16 @@
                                     <b>Role</b> <a class="float-right">
                                         @if ($admin)
                                             Administrator
+                                        @elseif(Auth::user()->role == 'guru' && $guru->kelas && $guru->ekstrakurikuler)
+                                            <dl class="float-right">
+                                <li>Guru Mapel</li>
+                                <li>Wali Kelas: {{ $guru->kelas->name ?? ''}}</li>
+                                <li>Pembina Ekskul: {{ $guru->ekstrakurikuler[0]->name ?? ''}}</li>
+                                </dl>
                                         @elseif(Auth::user()->role == 'guru' && $guru->kelas)
                                             <dl class="float-right">
                                 <li>Guru Mapel</li>
-                                <li>Wali Kelas {{ $guru->kelas->name }}</li>
+                                <li>Wali Kelas {{ $guru->kelas->name ?? ''}}</li>
                                 </dl>
                             @elseif($guru)
                                 Guru
@@ -441,7 +447,7 @@
                                                     <div class="my-2 position-relative">
                                                         <img class="img-preview img-fluid mb-2 col-sm-6 rounded oferflow-y-hidden"
                                                             style="max-width: 200px;">
-                                                    </div>  
+                                                    </div>
                                                     <div class="input-group mb-3">
                                                         <input type="hidden" name="user_id"
                                                             value="{{ $userLogin->user_id }}">

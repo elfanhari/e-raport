@@ -37,7 +37,7 @@ class DataSiswaController extends Controller
           abort('403');
         } else{
           return view('pages.datasiswa.index', [
-            'siswa' => Siswa::all(),
+            'siswa' => Siswa::orderBy('name', 'ASC')->get(),
             'role' => Auth::user()->role,
           ]);
         }
@@ -51,7 +51,7 @@ class DataSiswaController extends Controller
     public function create()
     {
         return view('pages.datasiswa.create', [
-          'kelas' => Kelas::get(),
+          'kelas' => Kelas::orderBy('tingkat', 'ASC')->orderBy('name', 'ASC')->get(),
           'role' => Auth::user()->role,
         ]);
     }
@@ -75,7 +75,9 @@ class DataSiswaController extends Controller
       $inputSiswa = $request->except(['_token', '_method', 'username', 'password']);
       Siswa::create($inputSiswa);
 
-      return redirect(route('datasiswa.index'))->withInfo('Data siswa berhasil ditambahkan!');
+      $role = Auth::user()->role;
+
+      return redirect(route('datasiswa.index', $role))->withInfo('Data siswa berhasil ditambahkan!');
 
     }
 
@@ -112,7 +114,7 @@ class DataSiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $role, $id)
+    public function update(UpdateSiswaRequest $request, $role, $id)
     {
         Siswa::find($id)->update($request->all());
         return redirect(route('datasiswa.index',['datakelas' => $id, 'role' => $role]))->withInfo('Data Siswa: <b>' . Str::before($request->name, ' ') . '</b> berhasil diperbarui!');
@@ -126,7 +128,11 @@ class DataSiswaController extends Controller
      */
     public function destroy(Request $request, $role, $id)
     {
-      Siswa::find($id)->delete();
+      $siswa = Siswa::find($id);
+      $walisiswa = User::where('id', $siswa->wali->first()->user_id  ?? '')->delete();
+      $siswa->delete();
+      $walisiswa;
+      Wali::where('siswa_id', $id)->delete();
       User::where('id', $request->user_id)->delete();
       AnggotaEkskul::where('siswa_id', $id)->delete();
       Catatanwalikelas::where('siswa_id', $id)->delete();
@@ -139,9 +145,6 @@ class DataSiswaController extends Controller
       NilaiKeterampilan::where('siswa_id', $id)->delete();
       Prestasi::where('siswa_id', $id)->delete();
       NilaiAkhir::where('siswa_id', $id)->delete();
-      $walisiswa = Wali::where('siswa_id', $id)->get();
-      $walisiswa->delete();
-      User::where('id', $walisiswa->user_id)->delete();
-      return redirect(route('datasiswa.index', ['datasiswa' => $id, 'role' => $role]))->withInfo('Data Siswa: <b>' . Str::before($request->name, ' ') . '</b> berhasil dihapus!');
+      return redirect(route('datasiswa.index', ['datasiswa' => $id, 'role' => $role]))->withInfo('Data Siswa: <b>' . Str::before($siswa->name, ' ') . '</b> berhasil dihapus!');
     }
 }

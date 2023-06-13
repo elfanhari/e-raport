@@ -9,29 +9,25 @@
     <div class="content-header">
         <div class="container-fluid">
 
-            <div class="row mb-2">
+            <div class="row">
                 <div class="col-sm-6">
                     <h1 class="m-0">Data Tahun Pelajaran</h1>
                 </div>
+                <div class="col-sm-6">
+                  @if (session()->has('info'))
+                      <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+                          @include('_success')
+                          {!! session('info') !!}
+                      </div>
+                  @endif
+                  @if (session()->has('failed'))
+                      <div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
+                          @include('_failed')
+                          {!! session('failed') !!}
+                      </div>
+                  @endif
+              </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-6 offset-md-6">
-                    @if (session()->has('info'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            @include('_success')
-                            {!! session('info') !!}
-                        </div>
-                    @endif
-                    @if (session()->has('failed'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            @include('_failed')
-                            {!! session('failed') !!}
-                        </div>
-                    @endif
-                </div>
-            </div>
-
         </div>
     </div>
 
@@ -68,7 +64,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            @if (!$tapel)
+                            @if (count($tapel) < 1)
                                 Belum ada Data Tahun Pelajaran.
                             @else
                                 <div class="table-responsive">
@@ -78,7 +74,7 @@
                                                 <th scope="col" rowspan="2">#</th>
                                                 <th scope="col" rowspan="2">Tahun Pelajaran</th>
                                                 <th scope="col" rowspan="2">Semester</th>
-                                                <th scope="col" colspan="2">Pembagian</th>
+                                                <th scope="col" colspan="2" class="bg-info text-center">PEMBAGIAN</th>
                                                 <th scope="col" rowspan="2">Aksi</th>
                                             </tr>
                                             <tr class="bg-yellow">
@@ -217,45 +213,6 @@
                                                         </div>
 
                                                            {{-- MODAL EDIT --}}
-
-                                                        {{-- MODAL TAMBAH --}}
-                                                        <div class="modal fade" id="modalTambah"
-                                                            tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog">
-
-                                                              <form action="{{ route('datatapel.store') }}" method="POST">
-                                                                @csrf
-
-                                                                @error('tahun_pelajaran')
-                                                                  <script>
-                                                                    $('#modalTambah').modal('show')
-                                                                  </script>
-                                                                @enderror
-
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title fw-semibold poppins"
-                                                                            id="exampleModalLabel">Tambah Data Tapel
-                                                                        </h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal"
-                                                                            aria-label="Close"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                      @include('pages.datatapel._addform')
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="submit" class="btn btn-primary"
-                                                                            >Simpan</button>
-                                                                    </div>
-                                                                </div>
-
-                                                              </form>
-
-                                                            </div>
-                                                        </div>
-
                                                     </td>
 
                                                 </tr>
@@ -272,6 +229,45 @@
             </div>
 
         </div>
+
+          {{-- MODAL TAMBAH --}}
+          <div class="modal fade" id="modalTambah"
+          tabindex="-1" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+
+            <form action="{{ route('datatapel.store') }}" method="POST">
+              @csrf
+
+              @error('tahun_pelajaran')
+                <script>
+                  $('#modalTambah').modal('show')
+                </script>
+              @enderror
+
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title fw-semibold poppins"
+                          id="exampleModalLabel">Tambah Data Tapel
+                      </h5>
+                      <button type="button" class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    @include('pages.datatapel._addform')
+                  </div>
+                  <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary"
+                          >Simpan</button>
+                  </div>
+              </div>
+
+            </form>
+
+          </div>
+      </div>
+
     </section>
 
     {{-- MODAL PETUNJUK AKSI --}}

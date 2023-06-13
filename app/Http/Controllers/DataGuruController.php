@@ -6,7 +6,10 @@ use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\StoreGuruRequest;
 use App\Http\Requests\UpdateGuruRequest;
 use App\Models\Admin;
+use App\Models\Ekstrakurikuler;
 use App\Models\Guru;
+use App\Models\Kelas;
+use App\Models\Pembelajaran;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -24,7 +27,10 @@ class DataGuruController extends Controller
           abort('403');
         } else{
           return view('pages.dataguru.index', [
-            'guru' => Guru::get(),
+            'guru' => Guru::orderBy('name', 'ASC')->get(),
+            'kelas' => Kelas::get(),
+            'pembelajaran' => Pembelajaran::get(),
+            'ekstrakurikuler' => Ekstrakurikuler::get(),
           ]);
         }
     }

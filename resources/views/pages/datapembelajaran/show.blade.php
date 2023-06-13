@@ -5,22 +5,19 @@
     <div class="content-header">
         <div class="container-fluid">
 
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Data Pembelajaran @can('gurumapel') Saya @endcan</h1>
-                </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <h1 class="m-0">Data Pembelajaran @can('gurumapel') Saya @endcan</h1>
             </div>
-
-            <div class="row">
-                <div class="col-md-6 offset-md-6">
-                    @if (session()->has('info'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            @include('_success')
-                            {!! session('info') !!}
-                        </div>
-                    @endif
-                </div>
+            <div class="col-sm-6">
+                @if (session()->has('info'))
+                    <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+                        @include('_success')
+                        {!! session('info') !!}
+                    </div>
+                @endif
             </div>
+        </div>
 
         </div>
     </div>
@@ -31,25 +28,47 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            {{-- Petunjuk Aksi --}}
-                            <button class="btn btn-info d-inline btn-sm btn-icon-split float-right ms-2 rounded-circle"
-                                data-bs-toggle="modal" data-bs-target="#petunjukAksi">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-info-circle"></i>
-                                </span>
-                            </button>
 
-                            <p>Nama Pembelajaran:
-                                <b>{{ $pembelajaran->mapel->name . ' - ' . $pembelajaran->kelas->name }}</b> <br>
-                                KKM: <b>{{ $pembelajaran->kkm }}</b> <br>
-                                Guru Pengampu:
-                                <b>{{ $pembelajaran->guru->name }}{{ $pembelajaran->guru->gelar ? ', ' . $pembelajaran->guru->gelar : '' }}</b>
-                            </p>
+                          <p>Nama Pembelajaran:
+                            <b>{{ $pembelajaran->mapel->name . ' - ' . $pembelajaran->kelas->name }}</b> <br>
+                            KKM: <b>{{ $pembelajaran->kkm }}</b> <br>
+                            Guru Pengampu:
+                            <b>{{ $pembelajaran->guru->name }}{{ $pembelajaran->guru->gelar ? ', ' . $pembelajaran->guru->gelar : '' }}</b>
+                        </p>
+
+                          {{-- <div class="callout callout-info my-1">
+                            <div class="row col-md-6">
+                              <div class="col-md-4 fw-bold">
+                                Mata Pelajaran
+                              </div>
+                              <div class="col-md-8">
+                                : {{ $pembelajaran->mapel->name }}
+                              </div>
+                              <div class="col-md-4 fw-bold">
+                                Kelas
+                              </div>
+                              <div class="col-md-8">
+                               :  {{ $pembelajaran->kelas->name }}
+                              </div>
+                              <div class="col-md-4 fw-bold">
+                                KKM
+                              </div>
+                              <div class="col-md-8">
+                               :  {{ $pembelajaran->kkm }}
+                              </div>
+                              <div class="col-md-4 fw-bold">
+                                Guru Pengampu
+                              </div>
+                              <div class="col-md-8">
+                               :  {{ $pembelajaran->guru->name }}{{ $pembelajaran->guru->gelar ? ', ' . $pembelajaran->guru->gelar : '' }}
+                              </div>
+                            </div>
+                          </div> --}}
 
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            @if (!$pembelajaran)
+                            @if (count($siswa) < 1)
                                 Belum ada Siswa di Pembelajaran ini.
                             @else
                                 <div class="table-responsive">
@@ -71,45 +90,6 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {{-- @foreach ($siswa as $item)
-                                                    <tr>
-                                                        <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $item->nis }}</td>
-                                                        <td style="max-width: 300px" class="text-uppercase">
-                                                            {{ $item->name }}</td>
-                                                        <td>
-                                                            <input type="number" class="form-control input-nilai"
-                                                                name="nilai_pengetahuans[]" id="nilai_pengetahuans"
-                                                                value="
-                                                                  {{ $nilaiPengetahuan->where('siswa_id', $item->id)->where('pembelajaran_id', $pembelajaran->id)->first() ? $nilaiPengetahuan->where('siswa_id', $item->id)->where('pembelajaran_id', $pembelajaran->id)->first()->nilai : '' }}
-                                                                ">
-                                                        </td>
-                                                        <td>
-                                                            <input type="number" class="form-control input-nilai"
-                                                                name="nilai_keterampilans[]" id="nilai_keterampilans"
-                                                                value="
-                                                                  {{ $nilaiKeterampilan->where('siswa_id', $item->id)->where('pembelajaran_id', $pembelajaran->id)->first() ? $nilaiKeterampilan->where('siswa_id', $item->id)->where('pembelajaran_id', $pembelajaran->id)->first()->nilai : '' }}
-                                                                ">
-                                                        </td>
-                                                        <td>
-                                                            <input type="number" class="form-control input-nilai"
-                                                                name="nilai_pts[]" id="nilai_pts"
-                                                                value="
-                                                                  {{ $nilaiPts->where('siswa_id', $item->id)->where('pembelajaran_id', $pembelajaran->id)->first() ? $nilaiPts->where('siswa_id', $item->id)->where('pembelajaran_id', $pembelajaran->id)->first()->nilai : '' }}
-                                                                ">
-                                                        </td>
-                                                        <td>
-                                                            <input type="number" class="form-control input-nilai"
-                                                                name="nilai_pas[]" id="nilai_pas"
-                                                                value="
-                                                                  {{ $nilaiPas->where('siswa_id', $item->id)->where('pembelajaran_id', $pembelajaran->id)->first() ? $nilaiPas->where('siswa_id', $item->id)->where('pembelajaran_id', $pembelajaran->id)->first()->nilai : '' }}
-                                                                ">
-                                                        </td>
-                                                        <td class="rataRata fw-bold">
-
-                                                        </td>
-                                                    </tr>
-                                                @endforeach --}}
 
                                                 @foreach ($siswa as $item)
                                                     <tr>

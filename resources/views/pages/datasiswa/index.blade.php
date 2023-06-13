@@ -13,12 +13,9 @@
                 <div class="col-sm-6">
                     <h1 class="m-0">Data Siswa</h1>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 offset-md-6">
-                    @if (session()->has('info'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="col-sm-6">
+                  @if (session()->has('info'))
+                        <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
                             @include('_success')
                             {!! session('info') !!}
                         </div>
@@ -205,7 +202,7 @@
                                                                                 <tr class="border-bottom">
                                                                                   <div class="text-center mb-3">
                                                                                     <img class="profile-user-img img-fluid img-circle"
-                                                                                    src="/img/default.jpg"
+                                                                                    src="/img/{{ $item->foto ?? 'default.jpg' }}"
                                                                                     alt="User profile picture">
                                                                                   </div>
                                                                                 </tr>

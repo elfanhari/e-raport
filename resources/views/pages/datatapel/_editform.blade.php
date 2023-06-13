@@ -30,19 +30,6 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="tanggalbagiraport" class="col-sm-5 col-form-label">Tanggal Bagi Raport</label>
-            <div class="col-sm-7">
-                <input type="date" value="{{ old('tanggalbagiraport', $tapel->tanggalbagiraport) }}"
-                    class="form-control @error('tanggalbagiraport') is-invalid @enderror " name="tanggalbagiraport"
-                    id="" placeholder="Masukkan Tanggal">
-                @error('tanggalbagiraport')
-                    <span class="invalid-feedback mt-1">
-                        {{ $message }}
-                    </span>
-                @enderror
-            </div>
-        </div>
-        <div class="form-group row">
             <label for="tempatbagiraport" class="col-sm-5 col-form-label">Tempat Bagi Raport</label>
             <div class="col-sm-7">
                 <input type="text" value="{{ old('tempatbagiraport', $tapel->tempatbagiraport) }}"
@@ -55,6 +42,19 @@
                 @enderror
             </div>
         </div>
+        <div class="form-group row">
+          <label for="tanggalbagiraport" class="col-sm-5 col-form-label">Tanggal Bagi Raport</label>
+          <div class="col-sm-7">
+              <input type="date" value="{{ old('tanggalbagiraport', $tapel->tanggalbagiraport) }}"
+                  class="form-control @error('tanggalbagiraport') is-invalid @enderror " name="tanggalbagiraport"
+                  id="" placeholder="Masukkan Tanggal">
+              @error('tanggalbagiraport')
+                  <span class="invalid-feedback mt-1">
+                      {{ $message }}
+                  </span>
+              @enderror
+          </div>
+      </div>
         <div class="offset-sm-5 col-sm-7 mt-4">
           <div class="checkbox">
             <label>

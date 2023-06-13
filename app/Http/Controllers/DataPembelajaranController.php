@@ -30,9 +30,9 @@ class DataPembelajaranController extends Controller
         abort('403');
     } else{
       if(auth()->user()->role === 'admin'){
-        $pembelajaran = Pembelajaran::get();
+        $pembelajaran = Pembelajaran::orderBy('mapel_id', 'ASC')->get();
       } else{
-        $pembelajaran = Pembelajaran::where('guru_id', auth()->user()->guru->id)->get();
+        $pembelajaran = Pembelajaran::where('guru_id', auth()->user()->guru->id)->orderBy('mapel_id', 'ASC')->get();
       }
         $nilai = NilaiPas::select('pembelajaran_id')
           ->union(NilaiPts::select('pembelajaran_id'))

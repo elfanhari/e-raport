@@ -13,16 +13,13 @@
                 <div class="col-sm-6">
                     <h1 class="m-0">Data Guru</h1>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 offset-md-6">
-                    @if (session()->has('info'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            @include('_success')
-                            {!! session('info') !!}
-                        </div>
-                    @endif
+                <div class="col-sm-6">
+                  @if (session()->has('info'))
+                    <div class="alert alert-success alert-dismissible fade show mb-0 mt-2" role="alert">
+                      @include('_success')
+                      {!! session('info') !!}
+                    </div>
+                  @endif
                 </div>
             </div>
 
@@ -116,6 +113,46 @@
                                                             </svg>
                                                         </a>
 
+                                                        @if (count($kelas->where('guru_id', $item->id)) > 0)
+                                                        <button type="button"
+                                                            class=" btn btn-danger pb-1 pt-0 px-2 d-inline"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modalGagalDelete/{{ $item->id }}">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor"
+                                                                class="bi bi-trash3-fill pt-0" viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                                                            </svg>
+                                                        </button>
+
+                                                        @elseif (count($pembelajaran->where('guru_id', $item->id)) > 0)
+                                                        <button type="button"
+                                                            class=" btn btn-danger pb-1 pt-0 px-2 d-inline"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modalGagalDelete/{{ $item->id }}">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor"
+                                                                class="bi bi-trash3-fill pt-0" viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                                                            </svg>
+                                                        </button>
+
+                                                        @elseif (count($ekstrakurikuler->where('guru_id', $item->id)) > 0)
+                                                        <button type="button"
+                                                            class=" btn btn-danger pb-1 pt-0 px-2 d-inline"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modalGagalDelete/{{ $item->id }}">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor"
+                                                                class="bi bi-trash3-fill pt-0" viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                                                            </svg>
+                                                        </button>
+
+                                                        @else
                                                         <button type="button"
                                                             class=" btn btn-danger pb-1 pt-0 px-2 d-inline"
                                                             data-bs-toggle="modal"
@@ -127,6 +164,36 @@
                                                                     d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
                                                             </svg>
                                                         </button>
+                                                        @endif
+
+
+                                                        {{-- MODAL HAPUS --}}
+                                                        <div class="modal fade" id="modalGagalDelete/{{ $item->id }}"
+                                                            tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title fw-semibold poppins"
+                                                                            id="exampleModalLabel">Hapus Data
+                                                                        </h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Data: <p class="text-primary fw-bold">
+                                                                            {{ $item->name }}
+                                                                        </p>
+                                                                        Data tersebut tidak dapat dihapus. Karena sudah memiliki relasi!
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-primary"
+                                                                            data-bs-dismiss="modal">Oke</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
                                                         {{-- MODAL HAPUS --}}
                                                         <div class="modal fade" id="modalDelete/{{ $item->id }}"
@@ -189,8 +256,8 @@
                                                                             <table>
                                                                                 <tr class="border-bottom">
                                                                                   <div class="text-center mb-3">
-                                                                                    <img class="profile-user-img img-fluid img-circle"
-                                                                                    src="/img/default.jpg"
+                                                                                    <img class="profile-user-img img-circle"
+                                                                                    src="/img/{{ $item->foto ?? 'default.jpg' }}" style="object-fit: fill"
                                                                                     alt="User profile picture">
                                                                                   </div>
                                                                                 </tr>

@@ -9,16 +9,13 @@
     <div class="content-header">
         <div class="container-fluid">
 
-            <div class="row mb-2">
+            <div class="row">
                 <div class="col-sm-6">
                     <h1 class="m-0">Data Akun</h1>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 offset-md-6">
+                <div class="col-sm-6">
                     @if (session()->has('info'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
                             @include('_success')
                             {!! session('info') !!}
                         </div>
@@ -37,15 +34,15 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             @if ($akun->count() > 0)
-
                                 <div class="table-responsive">
-                                   {{-- Petunjuk Aksi --}}
-                            <button class="btn btn-info d-inline btn-sm btn-icon-split float-right ms-3 mt-1 me-1 mb-2  rounded-circle"
-                            data-bs-toggle="modal" data-bs-target="#petunjukAksi">
-                            <span class="icon text-white-50">
-                                <i class="fas fa-info-circle"></i>
-                            </span>
-                        </button>
+                                    {{-- Petunjuk Aksi --}}
+                                    <button
+                                        class="btn btn-info d-inline btn-sm btn-icon-split float-right ms-3 mt-1 me-1 mb-2  rounded-circle"
+                                        data-bs-toggle="modal" data-bs-target="#petunjukAksi">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-info-circle"></i>
+                                        </span>
+                                    </button>
                                     <table id="table1" class="table table-sm table-hover ">
                                         <thead>
                                             <tr class="bg-dark text-white">
@@ -62,23 +59,23 @@
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>
-                                                      @php
-                                                          $role = $item->role;
-                                                      @endphp
+                                                        @php
+                                                            $role = $item->role;
+                                                        @endphp
 
-                                                      @if ($role == 'admin')
-                                                        {{ $item->admin->name }}
-                                                      @elseif ($role == 'guru')
-                                                        {{ $item->guru->name }}
-                                                      @elseif ($role == 'walisiswa')
-                                                        {{ $item->walisiswa->name }}
-                                                      @else
-                                                        {{ $item->siswa->name }}
-                                                      @endif
+                                                        @if ($role == 'admin')
+                                                            {{ $item->admin->name ?? '' }}
+                                                        @elseif ($role == 'guru')
+                                                            {{ $item->guru->name ?? '' }}
+                                                        @elseif ($role == 'walisiswa')
+                                                            {{ $item->walisiswa->name ?? '' }}
+                                                        @else
+                                                            {{ $item->siswa->name ?? '' }}
+                                                        @endif
 
                                                     </td>
                                                     <td>{{ $item->username }}</td>
-                                                    <td>{{ $item->email ? $item->email : '-'}}</td>
+                                                    <td>{{ $item->email ? $item->email : '-' }}</td>
                                                     <td>{{ $item->role }}</td>
                                                     <td>
                                                         {{-- <a href="#" type="button"
@@ -145,8 +142,8 @@
                                                                             @csrf
                                                                             @method('DELETE')
                                                                             <input type="hidden" name="user_id"
-                                                                                id=""
-                                                                                value="{{ $item->id }}" hidden>
+                                                                                id="" value="{{ $item->id }}"
+                                                                                hidden>
                                                                             <button type="submit"
                                                                                 class="btn btn-primary">Hapus</button>
                                                                         </form>
@@ -178,28 +175,29 @@
     </section>
 
     {{-- MODAL PETUNJUK AKSI --}}
-     {{-- Modal Petunjuk Aksi --}}
-     <div class="modal fade text-black" id="petunjukAksi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title fw-bold" id="exampleModalLabel">Petunjuk Aksi</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body fs-xs-14">
-                <table class="table table-borderless table-sm m-0">
-                  {{-- @include('petunjuk.add') --}}
-                  {{-- @include('petunjuk.show') --}}
-                  @include('petunjuk.edit')
-                  {{-- @include('petunjuk.delete') --}}
-                </table>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Oke</button>
-              </div>
-          </div>
-      </div>
-  </div>
+    {{-- Modal Petunjuk Aksi --}}
+    <div class="modal fade text-black" id="petunjukAksi" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="exampleModalLabel">Petunjuk Aksi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body fs-xs-14">
+                    <table class="table table-borderless table-sm m-0">
+                        {{-- @include('petunjuk.add') --}}
+                        {{-- @include('petunjuk.show') --}}
+                        @include('petunjuk.edit')
+                        {{-- @include('petunjuk.delete') --}}
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Oke</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     {{-- Modal Import Data --}}
     <div class="modal fade" id="importData" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

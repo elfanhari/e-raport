@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col">
     <div class="form-group row">
       <label for="abc" class="col-sm-4 col-form-label">Nama Sekolah</label>
       <div class="col-sm-8">

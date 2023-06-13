@@ -57,12 +57,15 @@
                     <div class="card">
                         <div class="card-header">
                             {{-- Petunjuk Aksi --}}
+
                             <button class="btn btn-info d-inline btn-sm btn-icon-split float-right ms-2 rounded-circle"
                                 data-bs-toggle="modal" data-bs-target="#petunjukAksi">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-info-circle"></i>
                                 </span>
-                            </button>
+                              </button>
+
+                              <button class="btn btn-danger btn-sm float-end" id="cetakNilai">Cetak Nilai</button>
 
                             <p>
                                 Tahun Pelajaran: <b>{{ $kelas->tapel->tahun_pelajaran }} - Semester {{ $kelas->tapel->semester == '1' ? 'Ganjil' : 'Genap' }}</b> <br>
@@ -77,7 +80,6 @@
                                 Belum ada Nilai Akhir.
                             @else
                                 <div class="table-responsive">
-                                    <button class="btn btn-danger btn-md float-left" id="cetakNilai">Cetak Nilai</button>
                                         <table id="table1" class="table table-sm table-hover table-bordered print-only">
                                           {{-- <caption class="d-none">NILAI AKHIR KELAS {{ $kelas->name }} TAHUN PELAJARAN {{ $kelas->tapel->tahun_pelajaran }} SEMESTER {{ $kelas->tapel->semester == 1 ? 'GANJIL' : 'GENAP' }}</caption> --}}
                                             <thead>
@@ -87,10 +89,10 @@
                                                     <th scope="col" rowspan="2">Nama</th>
                                                     <th scope="col" rowspan="2">L/P</th>
                                                     <th scope="col" colspan="{{ count($mapel) }}" class="text-center bg-warning">NILAI</th>
-                                                    <th scope="col" rowspan="2">Rata-Rata</th>
+                                                    {{-- <th scope="col" rowspan="2">Rata-Rata</th>
                                                     @if (auth()->user()->role === 'admin' || auth()->user()->role === 'guru')
                                                     <th scope="col" rowspan="2">Ranking</th>
-                                                    @endif
+                                                    @endif --}}
                                                 </tr>
                                                 <tr class="bg-primary">
                                                   @foreach ($mapel as $i => $mpl)
@@ -111,13 +113,13 @@
 
                                                   @for ($a = 0; $a < count($mapel); $a++)
                                                   @php
-                                                      $mapelId = $mapel[$a]->id; // 11
+                                                      $mapelId = $mapel[$a]->id;
                                                       $pembId = $pemb->where('mapel_id', $mapelId)->where('kelas_id', $item->kelas->id)->first()->id;
                                                   @endphp
                                                     <td class="nilaiMapel" data-id-mapel="{{ $mapel[$a]->id }}">{{ $nilaiAkhir->where('pembelajaran_id', $pembId)->where('siswa_id', $item->id)->first()->rata_rata ?? 0 }}</td>
                                                   @endfor
 
-                                                <td class="rataRata fw-bold">
+                                                {{-- <td class="rataRata fw-bold">
                                                   {{ number_format($rataRata[$loop->index], 2) }}
                                                 </td>
 
@@ -125,7 +127,7 @@
                                                 <td class="ranking">
                                                   {{ $ranking[$loop->index] }}
                                                 </td>
-                                                @endif
+                                                @endif --}}
 
                                               </tr>
                                               @endforeach

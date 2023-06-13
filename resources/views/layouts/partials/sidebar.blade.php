@@ -137,12 +137,18 @@
                       </p>
                   </a>
                   <ul class="nav nav-treeview">
-                      <li class="nav-item">
-                          <a href="{{ '/' . $user->role . '/datasekolah' }}" class="nav-link {{ Request::is( $user->role . '/datasekolah*') ? 'active' : '' }}">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Data Sekolah</p>
-                          </a>
-                      </li>
+                    <li class="nav-item">
+                      <a href="{{ '/' . $user->role . '/datasekolah' }}" class="nav-link {{ Request::is( $user->role . '/datasekolah*') ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Data Sekolah</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{ '/' . $user->role . '/datatapel' }}" class="nav-link {{ Request::is( $user->role . '/datatapel*') ? 'active' : '' }}">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Data Tahun Pelajaran</p>
+                      </a>
+                  </li>
                       <li class="nav-item">
                           <a href="{{ '/' . $user->role . '/datakelas' }}" class="nav-link {{ Request::is( $user->role . '/datakelas*') ? 'active' : '' }}">
                               <i class="far fa-circle nav-icon"></i>
@@ -153,12 +159,6 @@
                           <a href="{{ '/' . $user->role . '/datamapel' }}" class="nav-link {{ Request::is( $user->role . '/datamapel*') ? 'active' : '' }}">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Data Mapel</p>
-                          </a>
-                      </li>
-                      <li class="nav-item">
-                          <a href="{{ '/' . $user->role . '/datatapel' }}" class="nav-link {{ Request::is( $user->role . '/datatapel*') ? 'active' : '' }}">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Data Tahun Pelajaran</p>
                           </a>
                       </li>
                   </ul>
@@ -314,7 +314,7 @@
 
             {{-- GURU MAPEL --}}
             @if (Auth::user()->role == 'guru')
-              @if ($guru->pembelajaran)
+              @if (count($guru->pembelajaran) > 0)
                 <li class="nav-item
                 {{  Request::is('guru/datapembelajaran*')
             ? 'menu-open' : '' }}
@@ -344,8 +344,6 @@
             {{-- END GURU MAPEL --}}
 
             {{-- PEMBINA EKSKUL --}}
-
-
               @php
                if(Auth::user()->role === 'guru'){
                   $ekskul = Ekstrakurikuler::where('guru_id', auth()->user()->guru->id)->get();
@@ -394,7 +392,13 @@
 
 
               <li class="nav-item">
-                  <a href="{{ '/' . $user->role . '/nilaiakhir' }}" class="nav-link {{ Request::is( $user->role . '/nilaiakhir*') ? 'active' : '' }}">
+                    @if ($siswa)
+                      <a href="{{ '/' . $user->role . '/nilaiakhir/' . $siswa->kelas->id }}" class="nav-link {{ Request::is( $user->role . '/nilaiakhir*') ? 'active' : '' }}">
+                    @elseif ($walisiswa)
+                      <a href="{{ '/' . $user->role . '/nilaiakhir/' . $walisiswa->siswa->kelas->id }}" class="nav-link {{ Request::is( $user->role . '/nilaiakhir*') ? 'active' : '' }}">
+                    @else
+                        <a href="{{ '/' . $user->role . '/nilaiakhir' }}" class="nav-link {{ Request::is( $user->role . '/nilaiakhir*') ? 'active' : '' }}">
+                    @endif
                       <i class="nav-icon fas fa-book"></i>
                       <p>
                           Nilai Akhir
@@ -403,7 +407,13 @@
               </li>
 
               <li class="nav-item">
+                @if ($siswa)
+                  <a href="{{ '/' . $user->role . '/cetakraport/' . $siswa->kelas->id }}" class="nav-link {{ Request::is( $user->role . '/cetakraport*') ? 'active' : '' }}">
+                @elseif ($walisiswa)
+                  <a href="{{ '/' . $user->role . '/cetakraport/' . $walisiswa->siswa->kelas->id }}" class="nav-link {{ Request::is( $user->role . '/cetakraport*') ? 'active' : '' }}">
+                @else
                   <a href="{{ '/' . $user->role . '/cetakraport' }}" class="nav-link {{ Request::is( $user->role . '/cetakraport*') ? 'active' : '' }}">
+                @endif
                       <i class="nav-icon fas fa-file"></i>
                       <p>Cetak Raport</p>
                   </a>

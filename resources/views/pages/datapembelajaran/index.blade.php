@@ -5,21 +5,20 @@
     <div class="content-header">
         <div class="container-fluid">
 
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Data Pembelajaran</h1>
-                </div>
-            </div>
-
             <div class="row">
-                <div class="col-md-6 offset-md-6">
-                    @if (session()->has('info'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            @include('_success')
-                            {!! session('info') !!}
-                        </div>
-                    @endif
+
+                <div class="col-sm-6">
+                    <h1 class="m-0">Data Pembelajaran @can('guru') Saya @endcan </h1>
                 </div>
+
+                @if (session()->has('info'))
+                <div class="col-sm-6">
+                  <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+                      @include('_success')
+                      {!! session('info') !!}
+                    </div>
+                  </div>
+                @endif
             </div>
 
         </div>
@@ -29,38 +28,40 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            {{-- Petunjuk Aksi --}}
-                            <button class="btn btn-info d-inline btn-sm btn-icon-split float-right ms-2 rounded-circle"
-                                data-bs-toggle="modal" data-bs-target="#petunjukAksi">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-info-circle"></i>
-                                </span>
-                            </button>
-
-                            @can('admin')
-                              <a href="{{ route('datapembelajaran.create', $role) }}"
-                                  class="btn btn-sm float-left btn-primary btn-icon-split">
-                                  <span class="icon text-white-30 pe-1 pb-1 pt-0" style="padding-top: 0.20rem !important;">
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                          fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
-                                          <path
-                                              d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                          <path
-                                              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                      </svg>
+                  <div class="card">
+                    <div class="card-header">
+                        @if ($pembelajaran->count() > 1)
+                              {{-- Petunjuk Aksi --}}
+                              <button class="btn btn-info d-inline btn-sm btn-icon-split float-right ms-2 rounded-circle"
+                                  data-bs-toggle="modal" data-bs-target="#petunjukAksi">
+                                  <span class="icon text-white-50">
+                                      <i class="fas fa-info-circle"></i>
                                   </span>
-                                  <span class="text">Pembelajaran</span>
-                              </a>
-                            @endcan
+                              </button>
+                        @endif
 
+                        @can('admin')
+                          <a href="{{ route('datapembelajaran.create', $role) }}"
+                              class="btn btn-sm float-left btn-primary btn-icon-split">
+                              <span class="icon text-white-30 pe-1 pb-1 pt-0" style="padding-top: 0.20rem !important;">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                      fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                                      <path
+                                          d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                      <path
+                                          d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                  </svg>
+                              </span>
+                              <span class="text">Pembelajaran</span>
+                          </a>
+                        @endcan
 
                         </div>
+
                         <!-- /.card-header -->
                         <div class="card-body">
                             @if ($pembelajaran->count() < 1)
-                                Belum ada Siswa di Pembelajaran Ini.
+                                Belum ada Data Pembelajaran!
                             @else
                                 <div class="table-responsive">
                                     <table id="table1" class="table table-sm table-hover ">

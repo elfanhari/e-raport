@@ -5,24 +5,21 @@
     <div class="content-header">
         <div class="container-fluid">
 
-            <div class="row mb-2">
+            <div class="row">
                 <div class="col-sm-6">
                     <h1 class="m-0">Data Kelas @can('walikelas') Saya @endcan</h1>
                 </div>
+                <div class="col-sm-6">
+                  @if (session()->has('info'))
+                      <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+                          @include('_success')
+                          {!! session('info') !!}
+                      </div>
+                  @endif
+              </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-6 offset-md-6">
-                    @if (session()->has('info'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            @include('_success')
-                            {!! session('info') !!}
-                        </div>
-                    @endif
-                </div>
-            </div>
-
-        </div>
+          </div>
     </div>
 
     <section class="content">
@@ -228,10 +225,14 @@
               </div>
               <div class="modal-body fs-xs-14">
                 <table class="table table-borderless table-sm m-0">
-                  @include('petunjuk.add')
+
+                  @can('admin')
+                    @include('petunjuk.add')
+                    @include('petunjuk.edit')
+                    @include('petunjuk.delete')
+                  @endcan
+
                   @include('petunjuk.show')
-                  @include('petunjuk.edit')
-                  @include('petunjuk.delete')
                 </table>
               </div>
               <div class="modal-footer">
