@@ -58,60 +58,62 @@
 
                                     @include('pages.datasekolah._editform')
 
-                          {{-- <input type="hidden" name="user_id" id="" value="1"> --}}
-                          </form>
-                      </div>
-                  </div>
-                    @endif
-                </div>
-                <div class="col-md-6">
-                  <div class="card">
-                    <div class="card-header">
-                      Edit Logo Sekolah
-                    </div>
-                    <div class="card-body">
-                      <div class="table-responsive">
-                        <table class="table table-border table-hover mt-xs-2">
-
-                            <tr class="text-center table-secondary">
-                                <td>Logo</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center"><img src="/img/{{ $sekolah->logo }}"
-                                        alt="" style="width: 120px"
-                                        class=""></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <small class="fs-12"> <i>Ganti logo sekolah</i></small>
-                    <form action="{{ route('logosekolah.update', $sekolah->id) }}" method="POST"
-                        enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-
-                    <input type="hidden" name="old_logo" id="" value="{{ $sekolah->logo }}" hidden>
-
-                    <div class="">
-                        <div class="my-2">
-                            <img class="img-preview img-fluid mb-2 col-sm-6 oferflow-y-hidden" style="max-width: 200px;">
-                        </div>
-                        <div class="input-group mb-3">
-                            <input type="file" accept="image/*" class="form-control @error('files') is-invalid @enderror"
-                                name="files" id="gambar" onchange="previewImage()">
-                            <button type="submit" class="input-group-text btn-primary"
-                                for="inputGroupFile02">Update</button>
-                            @error('files')
-                                <span class="invalid-feedback mt-1">{{ $message }}</span>
-                            @enderror
+                                    {{-- <input type="hidden" name="user_id" id="" value="1"> --}}
+                                </form>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                Edit Logo Sekolah
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-border table-hover mt-xs-2">
 
-                </form>
-            </div>
-        </div>
-        </div>
+                                        <tr class="text-center table-secondary">
+                                            <td>Logo</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center"><img src="/img/{{ $sekolah->logo }}" alt=""
+                                                    style="width: 120px" class=""></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <small class="fs-12"> <i>Ganti logo sekolah</i></small>
+                                <form action="{{ route('logosekolah.update', $sekolah->id) }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+
+                                    <input type="hidden" name="old_logo" id="" value="{{ $sekolah->logo }}"
+                                        hidden>
+
+                                    <div class="">
+                                        <div class="my-2">
+                                            <img class="img-preview img-fluid mb-2 col-sm-6 oferflow-y-hidden"
+                                                style="max-width: 200px;">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <input type="file" accept="image/*"
+                                                class="form-control @error('files') is-invalid @enderror" name="files"
+                                                id="gambar" onchange="previewImage()">
+                                            <button type="submit" class="input-group-text btn-primary"
+                                                for="inputGroupFile02">Update</button>
+                                            @error('files')
+                                                <span class="invalid-feedback mt-1">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
         @endif
-        </div>
+
+            </div>
 
         </div>
     </section>
@@ -132,5 +134,4 @@
             }
         }
     </script>
-
 @endsection

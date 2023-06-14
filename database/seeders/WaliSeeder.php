@@ -18,15 +18,15 @@ class WaliSeeder extends Seeder
         [
           'user_id' => 7,
           'siswa_id' => 1,
-          'name' => 'MUNGALIM',
+          'name' => 'Herman',
           'jk' => 'L',
           'sebagai' => 1,
         ],
         [
           'user_id' => 8,
           'siswa_id' => 2,
-          'name' => 'MUHDIR',
-          'jk' => 'L',
+          'name' => 'Tasrifah',
+          'jk' => 'P',
           'sebagai' => 1,
         ],
       ])->each(function($wali){

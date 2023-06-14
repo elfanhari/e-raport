@@ -7,7 +7,7 @@
       </li>
 
       <li class="nav-item">
-          <p class="mb-0 mt-2 fw-bold d-xs-none">e-Raport MTs Tarbiyatul Banat</p>
+          <p class="mb-0 mt-2 fw-bold d-xs-none">e-Raport MTs Rekayasa</p>
       </li>
   </ul>
 

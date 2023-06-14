@@ -108,10 +108,10 @@
                 </div>
                 <div class="modal-body fs-xs-14">
                     <table class="table table-borderless table-sm m-0">
-                        @include('petunjuk.add')
-                        @include('petunjuk.show')
+                        {{-- @include('petunjuk.add') --}}
+                        {{-- @include('petunjuk.show') --}}
                         @include('petunjuk.edit')
-                        @include('petunjuk.delete')
+                        {{-- @include('petunjuk.delete') --}}
                     </table>
                 </div>
                 <div class="modal-footer">

@@ -29,14 +29,7 @@
                     <div class="card">
                         <div class="card-header">
 
-                          <p>Nama Pembelajaran:
-                            <b>{{ $pembelajaran->mapel->name . ' - ' . $pembelajaran->kelas->name }}</b> <br>
-                            KKM: <b>{{ $pembelajaran->kkm }}</b> <br>
-                            Guru Pengampu:
-                            <b>{{ $pembelajaran->guru->name }}{{ $pembelajaran->guru->gelar ? ', ' . $pembelajaran->guru->gelar : '' }}</b>
-                        </p>
-
-                          {{-- <div class="callout callout-info my-1">
+                          <div class="callout callout-warning my-1">
                             <div class="row col-md-6">
                               <div class="col-md-4 fw-bold">
                                 Mata Pelajaran
@@ -62,8 +55,14 @@
                               <div class="col-md-8">
                                :  {{ $pembelajaran->guru->name }}{{ $pembelajaran->guru->gelar ? ', ' . $pembelajaran->guru->gelar : '' }}
                               </div>
+                              <div class="col-md-4 fw-bold">
+                                Tahun Pelajaran
+                              </div>
+                              <div class="col-md-8">
+                               :  {{ $pembelajaran->mapel->tapel->tahun_pelajaran }} - Semester {{ $pembelajaran->mapel->tapel->semester }}
+                              </div>
                             </div>
-                          </div> --}}
+                          </div>
 
                         </div>
                         <!-- /.card-header -->
@@ -75,7 +74,7 @@
                                     <form action="{{ route('datapembelajaran.insertnilai', $pembelajaran->id) }}" method="POST">
                                         @csrf
                                         @method('PUT')
-                                        <table id="table1" class="table table-sm table-hover ">
+                                        <table id="" class="table table-sm table-hover">
                                             <thead>
                                                 <tr class="bg-dark text-white">
                                                     <th scope="col">#</th>

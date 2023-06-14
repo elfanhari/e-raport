@@ -18,7 +18,7 @@ class SiswaSeeder extends Seeder
         [
           'user_id' => 9,
           'kelas_id' => 1,
-          'name' => 'Elfan Hari Saputra',
+          'name' => 'Elfan  ',
           'jk' => 'L',
           'jenispendaftaran' => '1',
           'diterimapada' => '2020-07-16',
@@ -42,7 +42,7 @@ class SiswaSeeder extends Seeder
         [
           'user_id' => 10,
           'kelas_id' => 1,
-          'name' => 'Mella Indri Wardani',
+          'name' => 'Bunga',
           'jk' => 'P',
           'jenispendaftaran' => '1',
           'diterimapada' => '2020-07-16',
@@ -66,7 +66,7 @@ class SiswaSeeder extends Seeder
         [
           'user_id' => 11,
           'kelas_id' => 2,
-          'name' => 'Teguh Afriansyah',
+          'name' => 'Teguh',
           'jk' => 'L',
           'jenispendaftaran' => '1',
           'diterimapada' => '2021-07-16',
@@ -90,7 +90,7 @@ class SiswaSeeder extends Seeder
         [
           'user_id' => 12,
           'kelas_id' => 3,
-          'name' => 'Alfitka Haerul Kurniawan',
+          'name' => 'Alfitka',
           'jk' => 'L',
           'jenispendaftaran' => '2',
           'diterimapada' => '2022-10-16',

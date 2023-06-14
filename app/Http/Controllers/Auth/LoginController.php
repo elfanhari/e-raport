@@ -11,12 +11,11 @@ class LoginController extends Controller
 {
     public function index()
     {
-      return view('login');
+      return view('login2');
     }
 
     public function cekLogin(Request $request)
     {
-
       $input = $request->validate([
         'username' => ['required'],
         'password' => ['required'],

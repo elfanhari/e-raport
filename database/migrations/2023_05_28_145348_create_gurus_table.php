@@ -18,8 +18,8 @@ class CreateGurusTable extends Migration
             $table->foreignId('user_id');
             $table->string('name');
             $table->string('gelar')->nullable();
-            $table->integer('nip')->nullable();
-            $table->integer('nuptk')->nullable();
+            $table->bigInteger('nip')->nullable();
+            $table->bigInteger('nuptk')->nullable();
             $table->enum('jk', ['L', 'P']);
             $table->string('tempatlahir')->nullable();
             $table->date('tanggallahir')->nullable();

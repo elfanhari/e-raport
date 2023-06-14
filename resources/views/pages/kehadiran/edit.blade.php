@@ -28,20 +28,29 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            {{-- Petunjuk Aksi --}}
-                            <button class="btn btn-info d-inline btn-sm btn-icon-split float-right ms-2 rounded-circle"
-                                data-bs-toggle="modal" data-bs-target="#petunjukAksi">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-info-circle"></i>
-                                </span>
-                            </button>
 
-                            <p>
-                                Tahun Pelajaran: <b>{{ $kelas->tapel->tahun_pelajaran }} - Semester
-                                    {{ $kelas->tapel->semester == '1' ? 'Ganjil' : 'Genap' }}</b> <br>
-                                Wali Kelas:
-                                <b>{{ $kelas->guru->name }}{{ $kelas->guru->gelar ? ', ' . $kelas->guru->gelar : '' }}</b>
-                            </p>
+                            <div class="callout callout-warning my-1">
+                              <div class="row col-md-6">
+                                <div class="col-md-4 fw-bold">
+                                  Wali Kelas
+                                </div>
+                                <div class="col-md-8">
+                                 :  {{ $kelas->guru->name }}{{ $kelas->guru->gelar ? ', ' . $kelas->guru->gelar : '' }}
+                                </div>
+                                <div class="col-md-4 fw-bold">
+                                  Tahun Pelajaran
+                                </div>
+                                <div class="col-md-8">
+                                  :  {{ $kelas->tapel->tahun_pelajaran }}
+                                </div>
+                                <div class="col-md-4 fw-bold">
+                                  Semester
+                                </div>
+                                <div class="col-md-8">
+                                 :  {{ $kelas->tapel->semester == '1' ? '1 / Ganjil' : '2 / Genap' }}
+                                </div>
+                              </div>
+                            </div>
 
                         </div>
                         <!-- /.card-header -->
@@ -56,7 +65,7 @@
                                         @csrf
                                         @method('PUT')
 
-                                        <table id="table1" class="table table-sm table-hover ">
+                                        <table class="table table-sm table-hover ">
                                             <thead>
                                                 <tr class="bg-dark text-white">
                                                     <th scope="col">#</th>

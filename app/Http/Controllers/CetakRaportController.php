@@ -142,7 +142,7 @@ class CetakRaportController extends Controller
       if ($bagiraport->tanggalbagiraport == '' || $bagiraport->tempatbagiraport == '') {
         return back()->withFailed('Data yang akan dicetak belum lengkap!');
       }
-      return $pdf->stream($siswa->name . ' - ' . $siswa->kelas->name . '.pdf');
+      return $pdf->stream($siswa->name . ' - ' . $siswa->kelas->name . ' TP ' . $siswa->kelas->tapel->tahun_pelajaran . ' Semester ' . $siswa->kelas->tapel->semester . '.pdf');
 
     }
 }

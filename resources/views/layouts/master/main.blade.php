@@ -29,7 +29,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        e-Raport MTs Tarbiyatul Banat
+        e-Raport MTs Rekayasa
     </title>
 
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">

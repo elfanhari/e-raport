@@ -35,6 +35,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
+
+                          <div class="callout callout-warning my-auto">
+
                             {{-- Petunjuk Aksi --}}
                             <button class="btn btn-info d-inline btn-sm btn-icon-split float-right ms-2 rounded-circle"
                                 data-bs-toggle="modal" data-bs-target="#petunjukAksi">
@@ -57,8 +60,26 @@
                                 <span class="text">Anggota</span>
                             </button>
 
-                           <p>Nama Ekstrakurikuler: <b>{{ $ekstrakurikuler->name }}</b> <br>
-                            Pembina: <b>{{ $ekstrakurikuler->guru->name}} {{ $ekstrakurikuler->guru->gelar ? ', ' . $ekstrakurikuler->guru->gelar : '' }}</b> </p>
+                              <div class="row col-md-6">
+                                <div class="col-md-4 fw-bold">
+                                Ekstrakurikuler
+                                </div>
+                                <div class="col-md-8">
+                                 :  {{ $ekstrakurikuler->name }}
+                                </div>
+                                <div class="col-md-4 fw-bold">
+                                  Pembina
+                                </div>
+                                <div class="col-md-8">
+                                  : {{ $ekstrakurikuler->guru->name}} {{ $ekstrakurikuler->guru->gelar ? ', ' . $ekstrakurikuler->guru->gelar : '' }}
+                                </div>
+                                <div class="col-md-4 fw-bold">
+                                  Tahun Pelajaran
+                                </div>
+                                <div class="col-md-8">
+                                  : {{ $ekstrakurikuler->tapel->tahun_pelajaran}}
+                              </div>
+                            </div>
 
                         </div>
                         <!-- /.card-header -->

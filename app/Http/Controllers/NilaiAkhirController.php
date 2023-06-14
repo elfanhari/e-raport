@@ -68,11 +68,11 @@ class NilaiAkhirController extends Controller
       $mapel= Mapel::whereIn('id', $pembelajaran)->get();
 
       if (auth()->user()->role === 'admin' || auth()->user()->role === 'guru') {
-        $siswa = Siswa::where('kelas_id', $id)->orderBy('name', 'ASC')->get();
+        $siswa = Siswa::where('kelas_id', $id)->where('status', 1)->orderBy('name', 'ASC')->get();
       } elseif(auth()->user()->role === 'siswa'){
-        $siswa = Siswa::where('kelas_id', $id)->where('user_id', auth()->user()->id)->orderBy('name', 'ASC')->get();
+        $siswa = Siswa::where('kelas_id', $id)->where('user_id', auth()->user()->id)->where('status', 1)->orderBy('name', 'ASC')->get();
       } elseif(auth()->user()->role === 'walisiswa'){
-        $siswa = Siswa::where('kelas_id', $id)->where('id', auth()->user()->walisiswa->siswa_id)->orderBy('name', 'ASC')->get();
+        $siswa = Siswa::where('kelas_id', $id)->where('id', auth()->user()->walisiswa->siswa_id)->where('status', 1)->orderBy('name', 'ASC')->get();
       }
 
       $nilaiAkhir = NilaiAkhir::get();

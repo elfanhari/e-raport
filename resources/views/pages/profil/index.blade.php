@@ -30,18 +30,20 @@
     <div class="content-header">
         <div class="container-fluid">
 
-            @if (session()->has('info'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    @include('_success')
-                    {{ session('info') }}
-                </div>
-            @endif
+
 
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0">Profil Saya</h1>
                 </div>
-
+                <div class="col-sm-6">
+                  @if (session()->has('info'))
+                    <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+                        @include('_success')
+                        {{ session('info') }}
+                    </div>
+                  @endif
+                </div>
             </div>
         </div>
     </div>

@@ -31,19 +31,30 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            {{-- Petunjuk Aksi --}}
-                            <button class="btn btn-info d-inline btn-sm btn-icon-split float-right ms-2 rounded-circle"
-                                data-bs-toggle="modal" data-bs-target="#petunjukAksi">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-info-circle"></i>
-                                </span>
-                            </button>
 
-                            <p>
-                                Tahun Pelajaran: <b>{{ $kelas->tapel->tahun_pelajaran }} - Semester {{ $kelas->tapel->semester == '1' ? 'Ganjil' : 'Genap' }}</b> <br>
-                                Wali Kelas:
-                                <b>{{ $kelas->guru->name }}{{ $kelas->guru->gelar ? ', ' . $kelas->guru->gelar : '' }}</b>
-                            </p>
+                            <div class="callout callout-warning my-1">
+
+                                <div class="row col-md-6">
+                                  <div class="col-md-4 fw-bold">
+                                    Wali Kelas
+                                  </div>
+                                  <div class="col-md-8">
+                                   :  {{ $kelas->guru->name }}{{ $kelas->guru->gelar ? ', ' . $kelas->guru->gelar : '' }}
+                                  </div>
+                                  <div class="col-md-4 fw-bold">
+                                    Tahun Pelajaran
+                                  </div>
+                                  <div class="col-md-8">
+                                    :  {{ $kelas->tapel->tahun_pelajaran }}
+                                  </div>
+                                  <div class="col-md-4 fw-bold">
+                                    Semester
+                                  </div>
+                                  <div class="col-md-8">
+                                   :  {{ $kelas->tapel->semester == '1' ? '1 / Ganjil' : '2 / Genap' }}
+                                  </div>
+                                </div>
+                              </div>
 
                         </div>
                         <!-- /.card-header -->
@@ -78,7 +89,12 @@
                                                             {{-- <input type="hidden" name="siswa_id[]" value="{{ $item->id }}"> --}}
                                                             <form action="{{ route('cetakraport.print', ['id' => $item->id, 'nisn' => $item->nisn]) }}" method="get" target="_blank">
                                                             {{-- @csrf --}}
-                                                              <button type="submit" class="btn btn-primary btn-sm">Cetak Raport</button>
+                                                              <button type="submit" class="btn btn-primary btn-sm">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill me-1" viewBox="0 0 16 16">
+                                                                  <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+                                                                  <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                                                                </svg>
+                                                                Cetak Raport</button>
                                                             </form>
                                                           </td>
 

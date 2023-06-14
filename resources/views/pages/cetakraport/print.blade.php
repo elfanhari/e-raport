@@ -50,7 +50,7 @@
       </p>
     </div>
     <div class="footer">
-      <i>{{$siswa->name}} | {{$siswa->nis}}</i> <b style="float: right;"><i>Halaman 1</i></b>
+      <i>{{$siswa->name}} | {{$siswa->nis}}</i> <b style="float: right;"><i>i</i></b>
     </div>
   </div>
   <div class="page-break"></div>
@@ -105,7 +105,7 @@
       </table>
     </div>
     <div class="footer">
-      <i>{{$siswa->name}} | {{$siswa->nis}}</i> <b style="float: right;"><i>Halaman 2</i></b>
+      <i>{{$siswa->name}} | {{$siswa->nis}}</i> <b style="float: right;"><i>ii</i></b>
     </div>
   </div>
   <div class="page-break"></div>
@@ -303,7 +303,7 @@
       </table>
     </div>
     <div class="footer">
-      <i>{{$siswa->name}} | {{$siswa->nis}}</i> <b style="float: right;"><i>Halaman 3</i></b>
+      <i>{{$siswa->name}} | {{$siswa->nis}}</i> <b style="float: right;"><i>iii</i></b>
     </div>
   </div>
   <div class="page-break"></div>
@@ -417,7 +417,7 @@
       NIP. {{$siswa->kelas->guru->nip}}
     </div>
     <div class="footer">
-      <i>{{$siswa->kelas->name}} | {{$siswa->name}} | {{$siswa->nis}}</i> <b style="float: right;"><i>Halaman 4</i></b>
+      <i>{{$siswa->kelas->name}} | {{$siswa->name}} | {{$siswa->nis}}</i> <b style="float: right;"><i>Halaman 1</i></b>
     </div>
   </div>
   <div class="page-break"></div>
@@ -466,7 +466,7 @@
           <td rowspan="2" style="width: 5%;">NO</td>
           <td rowspan="2" style="width: 23%;">Mata Pelajaran</td>
           <td rowspan="2" style="width: 7%;">KKM</td>
-          <td colspan="3">Pengetahuan</td>
+          <td colspan="3">Nilai Akhir</td>
         </tr>
         <tr class="heading">
           <td style="width: 6%;">Nilai</td>
@@ -550,7 +550,7 @@
       NIP. {{$siswa->kelas->guru->nip}}
     </div>
     <div class="footer">
-      <i>{{$siswa->kelas->name}} | {{$siswa->name}} | {{$siswa->nis}}</i> <b style="float: right;"><i>Halaman 5</i></b>
+      <i>{{$siswa->kelas->name}} | {{$siswa->name}} | {{$siswa->nis}}</i> <b style="float: right;"><i>Halaman 2</i></b>
     </div>
   </div>
   <div class="page-break"></div>
@@ -593,90 +593,87 @@
     <div class="content">
       <table cellspacing="0">
 
-        <!-- EkstraKulikuler  -->
+        <!-- Ekskul -->
         <tr>
-          <td colspan="4" style="height: 25px;"><strong>C. EKSTRAKULIKULER</strong></td>
+          <td colspan="4" style="height: 25px; padding-top: 5px"><strong>C. EKSTRAKURIKULER</strong></td>
         </tr>
         <tr class="heading">
-          <td style="width: 6%;">NO</td>
-          <td style="width: 47%;">Kegiatan Ekstrakulikuler</td>
-          <td style="width: 47%;">Predikat</td>
-          {{-- <td>Keterangan</td> --}}
+          <td style="width: 5%;">NO</td>
+          <td style="width: 28%;">Kegiatan Ekstrakurikuler</td>
+          <td colspan="2">Predikat</td>
         </tr>
-
         @if(count($anggotaekskul) == 0)
         <tr class="nilai">
           <td class="center">1</td>
           <td></td>
-          <td class="description"></td>
-          {{-- <td class="description">
+          <td colspan="2" class="description">
             <span></span>
-          </td> --}}
+          </td>
         </tr>
         <tr class="nilai">
           <td class="center">2</td>
           <td></td>
-          <td class="description"></td>
-          {{-- <td class="description">
+          <td colspan="2" class="description">
             <span></span>
-          </td> --}}
+          </td>
         </tr>
         @elseif(count($anggotaekskul) == 1)
         <?php $no = 0; ?>
-        @foreach($anggotaekskul as $nilai_ekstra)
+        @foreach($anggotaekskul as $item)
         <?php $no++; ?>
         <tr class="nilai">
           <td class="center">{{$no}}</td>
-          <td>{{$nilai_ekstra->ekstrakurikuler->name}}</td>
-          <td class="description">
-            @if($nilai_ekstra->predikat == 'A')
-            Sangat Baik
-            @elseif($nilai_ekstra->predikat == 'B')
-            Baik
-            @elseif($nilai_ekstra->predikat == 'C')
-            Cukup
-            @elseif($nilai_ekstra->predikat == 'D')
-            Kurang
-            @endif
+          <td>
+            {{$item->ekstrakurikuler->name}}
           </td>
-          {{-- <td class="description">
-            <span>{!! nl2br($nilai_ekstra->deskripsi) !!}</span>
-          </td> --}}
+          <td colspan="2" class="description">
+            <span>
+              @if($item->predikat == 'A')
+              Sangat Baik
+              @elseif($item->predikat == 'B')
+              Baik
+              @elseif($item->predikat == 'C')
+              Cukup
+              @elseif($item->predikat == 'D')
+              Kurang
+              @endif
+            </span>
+          </td>
         </tr>
         @endforeach
         <tr class="nilai">
           <td class="center">2</td>
           <td></td>
-          <td class="center"></td>
-          {{-- <td class="description">
+          <td colspan="2" class="description">
             <span></span>
-          </td> --}}
+          </td>
         </tr>
         @else
         <?php $no = 0; ?>
-        @foreach($anggotaekskul as $nilai_ekstra)
+        @foreach($anggotaekskul as $item)
         <?php $no++; ?>
         <tr class="nilai">
           <td class="center">{{$no}}</td>
-          <td>{{$nilai_ekstra->ekstrakulikuler->name}}</td>
-          <td class="center">
-            @if($nilai_ekstra->predikat == 'A')
-            Sangat Baik
-            @elseif($nilai_ekstra->predikat == 'B')
-            Baik
-            @elseif($nilai_ekstra->predikat == 'C')
-            Cukup
-            @elseif($nilai_ekstra->predikat == 'D')
-            Kurang
-            @endif
+          <td>
+            {{$item->ekstrakurikuler->name}}
           </td>
-          {{-- <td class="description">
-            <span>{!! nl2br($nilai_ekstra->deskripsi) !!}</span>
-          </td> --}}
+          <td colspan="2" class="description">
+            <span>
+              @if($item->predikat == 'A')
+              Sangat Baik
+              @elseif($item->predikat == 'B')
+              Baik
+              @elseif($item->predikat == 'C')
+              Cukup
+              @elseif($item->predikat == 'D')
+              Kurang
+              @endif
+            </span>
+          </td>
         </tr>
         @endforeach
         @endif
-        <!-- End Ekstrakulikuler  -->
+        <!-- End Ekskul -->
 
         <!-- Prestasi -->
         <tr>
@@ -854,7 +851,7 @@
       </table>
     </div>
     <div class="footer">
-      <i>{{$siswa->kelas->nama_kelas}} | {{$siswa->nama_lengkap}} | {{$siswa->nis}}</i> <b style="float: right;"><i>Halaman 6</i></b>
+      <i>{{$siswa->kelas->nama_kelas}} | {{$siswa->nama_lengkap}} | {{$siswa->nis}}</i> <b style="float: right;"><i>Halaman 3</i></b>
     </div>
   </div>
 
