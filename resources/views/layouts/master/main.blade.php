@@ -98,7 +98,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title poppins fw-bold ">Logout</h4>
+                    <h4 class="modal-title poppins fw-semibold">Logout</h4>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

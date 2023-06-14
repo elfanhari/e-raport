@@ -58,34 +58,36 @@
 
                                     @include('pages.datasekolah._editform')
 
-                                    {{-- <input type="hidden" name="user_id" id="" value="1"> --}}
-                                </form>
-                            </div>
-                        </div>
+                          {{-- <input type="hidden" name="user_id" id="" value="1"> --}}
+                          </form>
+                      </div>
+                  </div>
+                    @endif
+                </div>
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header">
+                      Edit Logo Sekolah
                     </div>
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header">
-                                Edit Logo Sekolah
-                            </div>
-                            <div class="card-body">
-                              <tr class="text-center table-secondary">
-                                <div class="table-responsive">
-                                    <table class="table table-border table-hover mt-xs-2">
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-border table-hover mt-xs-2">
 
-                                            <tr>
-                                                <td class="text-center"><img src="/img/{{ $sekolah->logo ?? 'logo.png' }}"
-                                                        alt="" style="width: 120px" class=""></td>
-                                            </tr>
-
-                                          </table>
-                                        </div>
-
-                <small class="fs-12"> <i>Ganti logo sekolah</i></small>
-
-                <form action="{{ route('logosekolah.update', $sekolah->id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
+                            <tr class="text-center table-secondary">
+                                <td>Logo</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center"><img src="/img/{{ $sekolah->logo }}"
+                                        alt="" style="width: 120px"
+                                        class=""></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <small class="fs-12"> <i>Ganti logo sekolah</i></small>
+                    <form action="{{ route('logosekolah.update', $sekolah->id) }}" method="POST"
+                        enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
 
                     <input type="hidden" name="old_logo" id="" value="{{ $sekolah->logo }}" hidden>
 
